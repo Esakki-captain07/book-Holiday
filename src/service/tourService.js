@@ -265,11 +265,12 @@ const fetchReligeos = async(req,res)=>{
     const topHoneymoonPackages = async (req, res) => {
         try {
             const honeymoonPackages = await tourModel.find({
-
-                isActive: 'active' 
-            }).sort({ rating: -1 }).limit(5);
+                honeymoonPackages: true,
+            })
+            .sort({ rating: -1 })
+            .limit(5);
     
-            if (honeymoonPackages.length > 0) {
+            if (honeymoonPackages && honeymoonPackages.length > 0) {
                 res.status(200).json({
                     message: 'Top honeymoon packages found',
                     data: honeymoonPackages,
@@ -280,12 +281,13 @@ const fetchReligeos = async(req,res)=>{
                 });
             }
         } catch (error) {
-            console.error(error);
+            console.error('Error fetching honeymoon packages:', error);
             res.status(500).json({
                 message: error.message || 'Internal Server Error',
             });
         }
     };
+    
     
 
 export default{
