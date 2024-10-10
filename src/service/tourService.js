@@ -265,8 +265,7 @@ const fetchReligeos = async(req,res)=>{
     const topHoneymoonPackages = async (req, res) => {
         try {
             const honeymoonPackages = await tourModel.find({
-                country: 'india',
-                upComming: false, 
+
                 isActive: 'active' 
             }).sort({ rating: -1 }).limit(5);
     

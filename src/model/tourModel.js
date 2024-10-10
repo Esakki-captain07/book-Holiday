@@ -32,6 +32,9 @@ const tourSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    honeymoonPackages:{
+        type:Boolean,
+    },
     availableSeats:{
         type: Number,
         required:true
